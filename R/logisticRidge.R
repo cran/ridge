@@ -14,6 +14,18 @@ logisticRidge <- function(formula, data, lambda = "automatic",
     cl <- match.call()
     m <- match.call(expand.dots = FALSE)
     scaling <- match.arg(scaling)
+    if((lambda == "automatic" && !is.null(lambda)) && scaling != "corrForm")
+      {
+        warning("lambda is chosen automatically so scaling is set to \"corrForm\" ")
+        scaling <- "corrForm"
+        cl$scaling <- scaling
+      }
+    if(is.null(lambda) && scaling != "corrForm")
+      {
+        warning("lambda is chosen based on number of components so scaling is set to \"corrForm\"")
+        scaling <- "corrForm"
+        cl$scaling <- scaling
+      }
     if(scaling == "none")
       {
         isScaled <- FALSE

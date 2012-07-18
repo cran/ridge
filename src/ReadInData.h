@@ -1,4 +1,5 @@
 #include "depends.h"
+#ifdef HAVE_GSL_HEADER
 /* ReadInData.h is the header file for the source file ReadInData.c */
 
 /*This file defines the functions writeGenotypes and writePhenotypes*/
@@ -131,3 +132,4 @@ int safelyFreeMatrix(GSL_TYPE(matrix) * mat);
 
 /* scaleX not used in R package */
 /* int scaleX(gsl_matrix * X, int n2, int NSNPS); */
+#endif

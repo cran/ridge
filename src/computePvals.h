@@ -7,17 +7,8 @@
 
 /* includes */
 
-#include <stdio.h>
-#include <gsl/gsl_vector.h>
-#include <gsl/gsl_matrix.h>
-#include <gsl/gsl_rng.h>
-#include <gsl/gsl_blas.h>
-#include <gsl/gsl_randist.h>
-#include <gsl/gsl_statistics.h>
-#include <gsl/gsl_sf.h>
-#include <gsl/gsl_permutation.h>
-#include <gsl/gsl_cdf.h>
-#include <math.h>
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
 
 #include "ReadInData.h"
 #include "ridgeRegressionFunctions.h"
@@ -65,3 +56,5 @@ int computePermPs(GSL_TYPE(vector) * permPs,
 		  int SEED,
 		  int intercept_flag,
 		  char *model);
+
+#endif

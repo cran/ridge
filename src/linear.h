@@ -1,7 +1,9 @@
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
+
 #include "commonFunctions.h"
 #include "computePvals.h"
 #include "coordinateDescent.h"
-#include "depends.h"
 #include "linearFunctions.h"
 #include "ReadInData.h"
 #include "ridgeRegressionFunctions.h"
@@ -35,3 +37,4 @@ int linearMain(char * genofilename,
 	       int predict_flag,
 	       PREC convergence_threshold,
 	       int verbose);
+#endif

@@ -47,7 +47,7 @@ objectiveFunction(B, X, y, k, intercept = TRUE)
 A semi-automatic method to guide the choice of ridge parameter in ridge regression. Cule, E. and De Iorio, M. (2012) arXiv:1205.0686v1 [stat.AP] 
 }
 \author{
-Cule, E.
+Erika Cule
 }
 \note{
 These functions are not to be called directly by the user. They should be called via \code{logisticRidge}.

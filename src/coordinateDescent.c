@@ -1,4 +1,5 @@
 #include "coordinateDescent.h"
+#ifdef HAVE_GSL_HEADER
 
 int coordinateDescentLogisticGenotypes(gsl_matrix_int * X,
 		gsl_vector_int * y,
@@ -697,3 +698,4 @@ int get_prev_variant_col(int current_pos, int number_of_columns)
   }
   return new_pos;
 }
+#endif

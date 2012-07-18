@@ -1,8 +1,5 @@
 #include "ReadInData.h"
-#include <math.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
+#ifdef HAVE_GSL_HEADER
 
 void writePhenotypes(int NINDIV)
 {
@@ -850,3 +847,4 @@ int safelyFreeMatrix(GSL_TYPE(matrix) * mat)
 /*  Rprintf("\n");  */
 /*  Rprintf("\tWritten by Erika Cule 2012\n\n");  */
 /* } */
+#endif

@@ -1,12 +1,11 @@
 #include "computePvals.h"
-
+#ifdef HAVE_GSL_HEADER
 /* 
    computePvals.c
    All the computePvals functions we could need
    i.e. the approx ones and the permutation ones for 
    different sorts of models
 */
-
 /* Compute Approx Ps */
 // NB value of shrinkage parameter is already accounted for
 // in the vector div (see the function computeLinearRidge)
@@ -110,7 +109,7 @@ int computeApproxPsLinear(GSL_TYPE(vector) * B,
   GSL_FUNCTION(matrix,scale)(varMat, sig2hat);
   GSL_FUNCTION(vector,view) sdview = GSL_FUNCTION(matrix,diagonal)(varMat);
   GSL_TYPE(vector) * Zstat = GSL_FUNCTION(vector,alloc)(varMat->size1);
-  Zstat = &sdview.vector;
+  GSL_FUNCTION(vector,memcpy)(Zstat,&sdview.vector);
   for(i = 0; i < Zstat->size; i++)
     {
       GSL_FUNCTION(vector,set)(Zstat, i, 1 / MATHS_FUNCTION(sqrt)(GSL_FUNCTION(vector,get)(Zstat, i)));
@@ -120,10 +119,11 @@ int computeApproxPsLinear(GSL_TYPE(vector) * B,
     {
       GSL_FUNCTION(vector,set)(pvals, i,  2*(1 - UGAUSSIAN_FUNCTION(MATHS_FUNCTION(fabs)(GSL_FUNCTION(vector,get)(Zstat, i)))));
     }
-  // Don't need to free Zstat as it points to varMat
+  // Free the variables
   GSL_FUNCTION(matrix,free)(UD2div);
   GSL_FUNCTION(matrix,free)(H);
   GSL_FUNCTION(vector,free)(ypred);
+  GSL_FUNCTION(vector,free)(div);
   GSL_FUNCTION(vector,free)(div2);
   GSL_FUNCTION(vector,free)(DD22kdiv2);
   GSL_FUNCTION(matrix,free)(VD);
@@ -131,6 +131,7 @@ int computeApproxPsLinear(GSL_TYPE(vector) * B,
   GSL_FUNCTION(vector,free)(diagvector);
   GSL_FUNCTION(matrix,free)(diagmatrix);
   GSL_FUNCTION(matrix,free)(varMat);
+  GSL_FUNCTION(vector,free)(Zstat);
   return 0;
 }
 
@@ -440,6 +441,13 @@ int computePermPs(GSL_TYPE(vector) * permPs,
 
 	      /* Move results from perm_results to permbeta */
 
+	      /* Free Z */
+	      GSL_FUNCTION(matrix,free)(V);
+	      GSL_FUNCTION(vector,free)(D);
+	      GSL_FUNCTION(vector,free)(D2);
+	      GSL_FUNCTION(matrix,free)(U);
+	      GSL_FUNCTION(vector,free)(a);
+	      GSL_FUNCTION(matrix,free)(Z);
 
   	    } else {
   	    computeLinearGeneralizedRidge(permbeta, pred, &permYview_linear.vector, shrinkage, intercept_flag);
@@ -482,5 +490,14 @@ int computePermPs(GSL_TYPE(vector) * permPs,
    	} 
       GSL_FUNCTION(vector,set)(permPs, i-start, (PREC) tmp/(PREC) NPERM);
     }
+  /* Free the vector tau_vector */
+  GSL_FUNCTION(vector,free)(tau_vector);
+  /* Free the matrix permbetamat */
+  GSL_FUNCTION(matrix,free)(permbetamat);
+  /* Free the vector permbeta */
+  GSL_FUNCTION(vector,free)(permbeta);
+  /* Free the random number generator */
+  gsl_rng_free(r);
   return 0;
 }
+#endif

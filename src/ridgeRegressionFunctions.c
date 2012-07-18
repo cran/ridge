@@ -1,9 +1,8 @@
 /* ridgeRegressionFunctions.c */
 
 /* includes */
-#include <math.h>
-
 #include "ridgeRegressionFunctions.h"
+#ifdef HAVE_GSL_HEADER
 
 /* Compute Linear Ridge */
 int computeLinearRidge(GSL_TYPE(vector) * ahat, 
@@ -295,7 +294,7 @@ int my_gsl_solve(gsl_matrix * X,
   int ncol_solved_x = solvedX->size2;
   if(nrow_x != ncol_x || nrow_x != nrow_solved_x || ncol_x != ncol_solved_x)
     {
-      error("ERROR: dimensions error in myCudaSolve\n");
+      error("ERROR: dimensions error in my_gsl_solve\n");
     } else {
     //solve tXWX
     int signum;
@@ -577,3 +576,4 @@ gsl_vector * my_gsl_linear_fit(gsl_matrix * X,
   GSL_FUNCTION(matrix,free)(covar);
   return beta;
 }
+#endif

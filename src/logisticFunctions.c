@@ -1,5 +1,7 @@
 #include "logisticFunctions.h"
 
+#ifdef HAVE_GSL_HEADER
+
 /* Logistic Regression Functions */
 
 gsl_vector_int * readLogisticPhenotypes(char * phenotypefilename, int NINDIV)
@@ -83,3 +85,4 @@ int returnToOriginalScaleLogistic(GSL_TYPE(vector) * betaOut,
   return 0;
 }
 
+#endif

@@ -1,5 +1,6 @@
 
 #include "depends.h"
+#ifdef HAVE_GSL_HEADER
 #include "ReadInData.h" // Required for getNROW in readCoefficients
 
 gsl_matrix_int * readShortGenotypes(char * genofilename,
@@ -39,3 +40,5 @@ int checkGenotypes(gsl_matrix_int * mat);
 
 int checkForInvariantPredictors(char * genofilename, 
 				int NINDIV);
+
+#endif

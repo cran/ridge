@@ -1,4 +1,5 @@
 #include "depends.h"
+#ifdef HAVE_GSL_HEADER
 #include "ridgeRegressionFunctions.h"
 
 #if _CUDA_
@@ -17,3 +18,6 @@ GSL_TYPE(vector) * readLinearPhenotypes(char * phenotypefilename,
 				     int r,
 				     PREC * kr,
 				     PREC * DofF);
+
+#endif
+

@@ -1,6 +1,8 @@
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
+
 #include "commonFunctions.h"
 #include "computeLinearRidge.h"
-#include "depends.h"
 #include "ReadInData.h"
 #include "ridgeRegressionFunctions.h"
 
@@ -20,4 +22,6 @@ int readSNPsThinAndComputePCs(char * genofilename,
 			      GSL_TYPE(matrix) * thinnedGenotypes,
 			      GSL_TYPE(vector) * D2,
 			      int * howManyK);
+
+#endif
 

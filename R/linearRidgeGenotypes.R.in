@@ -1,6 +1,6 @@
-## Logistic Ridge Big function (calls C)
+## Linear Ridge Big function (calls C)
 
-logisticRidgeGenotypes <- function(genotypesfilename,
+linearRidgeGenotypes <- function(genotypesfilename,
                                    phenotypesfilename,
                                    lambda = -1,
                                    thinfilename = NULL,
@@ -10,7 +10,7 @@ logisticRidgeGenotypes <- function(genotypesfilename,
                                    intercept = TRUE,
                                    verbose = FALSE)
   {
-    if(!TRUE)
+    if(!@HAVE_GSL@)
       stop("GSL >=1.14 is not installed, you cannot use this function")
     ## Tilde expansion of phenotypesfilename
     ## (Because the C code cannot cope with the tilde)
@@ -88,7 +88,7 @@ logisticRidgeGenotypes <- function(genotypesfilename,
               thinfilename = as.character(thinfilename),
               intercept = as.integer(intercept),
               lambda = as.double(lambda),
-              model = as.character("logistic"),
+              model = as.character("linear"),
               predict = as.integer(0),
               verbose = as.integer(verbose),
               PACKAGE = "ridge")

@@ -1,16 +1,29 @@
 /* Pre-requisites for the package regression */
+#include "config.h"
+
+#ifdef HAVE_GSL_HEADER
+
 #include <float.h>
 #include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
 #include <gsl/gsl_blas.h>
-#include <gsl/gsl_multifit.h>
-#include <gsl/gsl_rng.h>
-#include <gsl/gsl_vector.h>
-#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_cdf.h>
+#include <gsl/gsl_eigen.h>
+#include <gsl/gsl_linalg.h>
 #include <gsl/gsl_math.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_multifit.h>
+#include <gsl/gsl_randist.h>
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_permutation.h>
+#include <gsl/gsl_sf.h>
 #include <gsl/gsl_statistics.h>
+#include <gsl/gsl_statistics_double.h>
+#include <gsl/gsl_vector.h>
 
 #include "R.h"
 
@@ -50,4 +63,6 @@
 	#define GSL_BLAS_FUNCTION(name) gsl_blas_d ## name
 	#define PREPARE_FUNCTION(name) prepare ## name ## ForCoordinateDescent
 	#define PREC_DIFF -6
+#endif
+
 #endif

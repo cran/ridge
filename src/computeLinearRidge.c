@@ -1,4 +1,5 @@
 #include "computeLinearRidge.h"
+#ifdef HAVE_GSL_HEADER
 
 
 /* SVD of any matrix */
@@ -156,3 +157,4 @@ int prepareLambdas(gsl_vector * y,
 /*   return Bridge; */
 /* } */
 
+#endif

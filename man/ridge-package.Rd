@@ -19,6 +19,6 @@ list of functions, use \code{library(help="ridge")}.
 
 }
 \author{
-E. Cule
+Erika Cule
 }
 \keyword{ package }

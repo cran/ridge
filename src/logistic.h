@@ -1,7 +1,9 @@
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
+
 #include "computePvals.h"
 #include "coordinateDescent.h"
 #include "commonFunctions.h"
-#include "depends.h"
 #include "logisticFunctions.h"
 #include "ReadInData.h"
 #include "thin.h"
@@ -34,7 +36,5 @@ int logisticMain(char * genofilename,
 		 int predict_flag,
 		 PREC convergence_threshold,
 		 int verbose);
-
-
-
+#endif
 

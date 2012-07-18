@@ -1,4 +1,5 @@
 #include "linear.h"
+#ifdef HAVE_GSL_HEADER
 
 int linearMain(char * genofilename,
 	       char * thinfilename,
@@ -339,7 +340,7 @@ int linearMain(char * genofilename,
 					lambda,
 					approxPs);
 		}
-	      GSL_FUNCTION(vector,free)(D2);
+
 	      GSL_TYPE(vector) * approxPsOut = GSL_FUNCTION(vector, calloc)(NPRED);
 	      GSL_TYPE(vector) * tmp_for_means = GSL_FUNCTION(vector, calloc)(approxPs->size);
 	      GSL_TYPE(vector) * tmp_for_scales = GSL_FUNCTION(vector, calloc)(approxPs->size);
@@ -361,6 +362,8 @@ int linearMain(char * genofilename,
 		       COVARnames,
 		       approxtestfilename,
 		       approxPsOut);
+	      /* Free the allocated vector */
+	      GSL_FUNCTION(vector,free)(approxPsOut);
 	      if(verbose)
 		{
 		  Rprintf("done\n"); 
@@ -375,6 +378,7 @@ int linearMain(char * genofilename,
 		  Rprintf("Computing permutation test p-values..."); 
 		}
 	      GSL_TYPE(vector) * permPs = GSL_FUNCTION(vector, calloc)(betaForTests->size);
+	      /* Temporary vector shrinkage */
 	      GSL_TYPE(vector) * shrinkage = GSL_FUNCTION(vector, calloc)(predictors->size2);
 	      int NCOL = predictors->size2 - intercept_flag;
 	      GSL_FUNCTION(matrix,view) genotypes = GSL_FUNCTION(matrix,submatrix)(predictors, 0, intercept_flag, NINDIV, NCOL);
@@ -389,7 +393,8 @@ int linearMain(char * genofilename,
 			    1,
 			    intercept_flag,
 			    "linear");
-	      
+	      /* free the vector shrinkage */
+	      GSL_FUNCTION(vector,free)(shrinkage);
 	      GSL_TYPE(vector) * permPsOut = GSL_FUNCTION(vector, calloc)(NPRED);
 	      /* Temporary vector for means */
 	      /* (Used for returnToOriginalScaleLinear) */
@@ -418,12 +423,21 @@ int linearMain(char * genofilename,
 		       COVARnames,
 		       permtestfilename,
 		       permPsOut);
+	      GSL_FUNCTION(vector,free)(permPsOut);
 	      if(verbose)
 		{
 		  Rprintf("done\n"); 
 		}
 	    } // Ends if permtestfilename
+	  /* Free the variables */
 	  GSL_FUNCTION(vector, free)(betaForTests);
+	  GSL_FUNCTION(vector, free)(means);
+	  GSL_FUNCTION(vector, free)(scales);
+	  GSL_FUNCTION(matrix, free)(V);
+	  GSL_FUNCTION(vector, free)(D);
+	  GSL_FUNCTION(vector,free)(D2);
+	  GSL_FUNCTION(matrix, free)(U);
+	  GSL_FUNCTION(vector, free)(a);
 	} // Ends if (approxtestfilename != NULL || permtestfilename != NULL)
 
       // However the beta were calculated, return them to their original scale here
@@ -507,3 +521,4 @@ int linearMain(char * genofilename,
   gsl_matrix_int_free(genotypesShort);
   return 0;
 }
+#endif

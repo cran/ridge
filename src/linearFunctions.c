@@ -1,4 +1,5 @@
 #include "linearFunctions.h"
+#ifdef HAVE_GSL_HEADER
 
 GSL_TYPE(vector) * readLinearPhenotypes(char * phenotypefilename,
 					int NINDIV)
@@ -57,3 +58,4 @@ int computeLinearKr(GSL_TYPE(vector) * a,
   return 0;
 }
 
+#endif

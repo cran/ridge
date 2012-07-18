@@ -111,7 +111,7 @@ logisticRidge(formula, data, lambda = "automatic", nPCs = NULL, scaling = c("cor
 A semi-automatic method to guide the choice of ridge parameter in ridge regression. Cule, E. and De Iorio, M. (2012) arXiv:1205.0686v1 [stat.AP] 
 }
 \author{
-Cule, E. 
+Erika Cule
 }
 \seealso{
 \code{\link{linearRidge}}

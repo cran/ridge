@@ -3,19 +3,8 @@
 /* This file defines the function computeLinearRidge, computeLinearGeneralizedRidge, computeLinGenExpRidge */
 
 /* includes */
-#include <gsl/gsl_blas.h>
-#include <gsl/gsl_cdf.h>
-#include <gsl/gsl_eigen.h>
-#include <gsl/gsl_linalg.h>
-#include <gsl/gsl_math.h>
-#include <gsl/gsl_matrix.h>
-#include <gsl/gsl_randist.h>
-#include <gsl/gsl_permutation.h>
-#include <gsl/gsl_statistics_double.h>
-#include <gsl/gsl_vector.h>
-
-#include <math.h>
-#include <stdio.h>
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
 
 /* SVD of any matrix */
 int svdAnyMat(gsl_matrix * X, 
@@ -54,4 +43,6 @@ void computeLinearPvalsOurs(gsl_matrix * X,
 			    gsl_vector * y, 
 			    double lambda, 
 			    char * pvalsfilename);
+
+#endif
 

@@ -1,4 +1,5 @@
 #include "thin.h"
+#ifdef HAVE_GSL_HEADER
 
 gsl_vector_int * readThinFile(char * thinfilename,
 			      char ** SNPNAMES, 
@@ -234,3 +235,5 @@ int readSNPsThinAndComputePCs(char * genofilename,
 
   return 0;
 }
+
+#endif

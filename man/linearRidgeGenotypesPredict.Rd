@@ -17,15 +17,14 @@ linearRidgeGenotypesPredict(genotypesfilename, betafilename, phenotypesfilename 
 \arguments{
   \item{genotypesfilename}{
     character string: path to file containing SNP genotypes coded 0, 1,
-  2. (see \code{details}).
+  2. See \code{Input file formats}.
 }
   \item{betafilename}{
-    character string: path to file containing fitted coefficients. For
-  formatting, see \code{details}.
+    character string: path to file containing fitted coefficients. See \code{Input file formats}.
 }
   \item{phenotypesfilename}{
     (optional) character string: path to file in which to write out the
-  predicted phenotypes. See \code{details}. Whether or not this argument
+  predicted phenotypes. See \code{Output file formats}. Whether or not this argument
   is supplied, the fitted coefficients are also returned by the function.
 }
   \item{verbose}{
@@ -33,22 +32,29 @@ linearRidgeGenotypesPredict(genotypesfilename, betafilename, phenotypesfilename 
   outupt as the code runs. Defaults to \code{FALSE}.
 }
 }
-\details{
-  The file in \code{genofilename} must be formatted as a header row
-  consisting of SNP names followed by SNP genotypes one row per
-  individual. SNPs must be coded as 0, 1, 2 for minor allele
-  count. Missing values are not accommodated. 
-  The file in \code{betafilename} must be formatted as two columns. The
-  first column should contain the names of the predictors as a single
-  column. If an intercept coefficient is provided this should have the
-  name \code{Intercept} and be the first row. The rest of the first column
-  should contain the same names as the SNPs in the first row of
-  \code{genofilename}, in the same order. The second column should be
-  the corresponding coefficients. The format of \code{betafilename} is
+
+\section{Input file formats}{
+\describe{
+\item{genotypesfilename:}{A header row, plus one row for each
+  individual, one SNP per column. The header row contains SNP
+  names. SNPs are coded as 0, 1, 2 for minor allele count. Missing
+  values are not accommodated. }
+\item{betafilename:}{Two columns: First column is SNP names in same order as in \code{genotypesfilename}, second column is fitted coefficients. If the coefficients include an intercept then the first row of \code{betafilename} should contain it with the name Intercept in the first column. An Intercept thus labelled will be used appropriately in predicting the phenotypes. SNP names must match those in \code{genotypesfilename}. 
+  The format of \code{betafilename} is
   that of the output of \code{\link{linearRidgeGenotypes}}, meaning
   \code{linearRidgeGenotypesPredict} can be used to predict using
   coefficients fitted using \code{\link{linearRidgeGenotypes}} (see the example).
 }
+}
+}
+
+\section{Output file format}{
+Whether or not \code{phenotypesfilename} is provided, predicted phenotypes are returned to the R workshpace. If \code{phenotypesfilename} is provided, predicted phenotypes are written to the file specified (in addition).
+\describe{
+\item{phenotypesfilename:}{One column, containing predicted phenotypes, one individual per row.}
+}
+}
+
 \value{
   A vector of fitted values, the same length as the number of
   individuals whose data are in \code{genotypesfilename}. If

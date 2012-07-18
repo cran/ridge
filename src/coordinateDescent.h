@@ -1,5 +1,7 @@
-#include "commonFunctions.h"
 #include "depends.h"
+#ifdef HAVE_GSL_HEADER
+
+#include "commonFunctions.h"
 #include "ReadInData.h"
 #include "ridgeRegressionFunctions.h"
 
@@ -101,3 +103,5 @@ int coordinateDescentLinearGenotypes(gsl_matrix_int * X,
 		 
 int get_prev_variant_col(int current_pos, 
 			 int number_of_columns);
+#endif
+

@@ -1,4 +1,5 @@
 #include "logistic.h"
+#ifdef HAVE_GSL_HEADER
 
 int logisticMain(char * genofilename,
 		 char * thinfilename,
@@ -395,7 +396,7 @@ int logisticMain(char * genofilename,
   	  {
   	    if(verbose)
   	      {
-  		Rprintf("Computing approximate test p=values...");
+  		Rprintf("Computing approximate test p-values...");
   	      }
   	    /* Allocate vector for approximate p-values */
   	    GSL_TYPE(vector) * approxPs = GSL_FUNCTION(vector,calloc)(beta->size - intercept_flag);
@@ -422,8 +423,7 @@ int logisticMain(char * genofilename,
   					intercept_flag);
   	    /* Free the temporary vector for means */
   	    GSL_FUNCTION(vector, free)(tmp_for_means);
-  	    /* Free the vector for approxPs */
-  	    GSL_FUNCTION(vector, free)(approxPs);
+	    /* The vector for approxPs is already freed in returnToOriginalScaleLinear */
   	    /* Free the temporary vector for scales */
   	    GSL_FUNCTION(vector, free)(tmp_for_scales);
   	    /* Write out the p-values */
@@ -491,9 +491,17 @@ int logisticMain(char * genofilename,
   		     permPsOut);
   	    /* Free the vector for approxPsOut */
   	    GSL_FUNCTION(vector, free)(permPsOut);
-  	  }
+  	  } // Ends if permtestfilename != null 
+	/* Free the shrinkage vector */
   	GSL_FUNCTION(vector,free)(shrinkage);
-      }
+	/* Free the predictors matrix */
+	GSL_FUNCTION(matrix,free)(predictors);
+	/* Free the means */
+	GSL_FUNCTION(vector,free)(means);
+	/* Free the scales */
+	GSL_FUNCTION(vector,free)(scales);
+	} // if((approxtestfilename != NULL) || (permtestfilename != NULL))
+
     /* Return the beta to the original scale */
     GSL_TYPE(vector) * betaOut = GSL_FUNCTION(vector,calloc)(intercept_flag + NSNPS);
     returnToOriginalScaleLogistic(betaOut,
@@ -560,5 +568,5 @@ int logisticMain(char * genofilename,
   /* Free the short genotypes matrix */
   gsl_matrix_int_free(genotypesShort);
   return 0;
-  }
-
+}
+#endif

@@ -1,4 +1,5 @@
 #include "commonFunctions.h"
+#ifdef HAVE_GSL_HEADER
 
 /* Read short genotypes */
 /* Includes error checking to be sure that genotypes are formatted as short */
@@ -96,7 +97,8 @@ GSL_TYPE(vector) * readCoefficients(char * filename,
   // Open the file
   file = fopen(filename, "r");
   // Get the line
-  fgets(row_of_file, MY_LINE_MAX, file);
+  if(fgets(row_of_file, MY_LINE_MAX, file) == NULL)
+  	error("error reading from %s\n", filename);
   // Close the file
   fclose(file);
   // Split the line on whitespace 
@@ -123,12 +125,13 @@ GSL_TYPE(vector) * readCoefficients(char * filename,
   if(*intercept_flag)
     {
       // Skip the first line
-      fgets(row_of_file, MY_LINE_MAX, file);
+	if(fgets(row_of_file, MY_LINE_MAX, file) == NULL)
+  		error("error reading from %s\n", filename);
     }
   // A counter to keep track of lines
   int count = 0;
   // Then for every line
-  while(fgets(row_of_file, MY_LINE_MAX, file))
+  while(row_of_file, MY_LINE_MAX, file)
     {
       // Don't need the first word
       first_word = strtok(row_of_file, delim);
@@ -366,3 +369,4 @@ int  checkForInvariantPredictors(char * genofilename,
   return 0;
 }
 
+#endif

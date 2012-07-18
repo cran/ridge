@@ -2,6 +2,8 @@
    to be called from within R 
    in the linearRidgeBig or logisticRidgeBig functions*/
 #include "depends.h"
+
+#ifdef HAVE_GSL_HEADER
 #include "linear.h"
 #include "logistic.h"
 #include "ReadInData.h"
@@ -293,3 +295,6 @@ void regression_wrapper_function(char **g,
       free(COVARnames);
     }
 }
+
+#endif
+

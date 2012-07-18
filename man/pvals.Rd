@@ -71,7 +71,7 @@ pvals(x, ...)
 Significance testing in ridge regression for genetic data. Cule, E. et al (2011) BMC Bioinformatics, 12:372
 }
 \author{
-Cule, E.
+Erika Cule
 }
 \seealso{
 \code{linearRidge}, \code{logisticRidge}

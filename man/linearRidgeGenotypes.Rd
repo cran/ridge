@@ -19,10 +19,10 @@ TRUE, verbose = FALSE)
 \arguments{
   \item{genotypesfilename}{
     character string: path to file containing SNP genotypes coded 0, 1,
-  2. (see \code{details})
+  2. See \code{Input file formats}.
   }
   \item{phenotypesfilename}{
-    character string: path to file containing phenotypes.
+    character string: path to file containing phenotypes. See \code{Input file formats}.
   }
   \item{lambda}{
     (optional) shrinkage parameter. If not provided, the default denotes
@@ -30,20 +30,21 @@ TRUE, verbose = FALSE)
   De Iorio (2012). 
 }
   \item{thinfilename}{
-(optional) character string: path to file containing three columns: SNP name, chromosme and SNP psotion.
+(optional) character string: path to file containing three columns: SNP name, chromosme and SNP psotion. See \code{Input file formats}. (See \code{details}.)
 }
   \item{betafilename}{
-(optional) character string: path to file where the output will be written.
+(optional) character string: path to file where the output will be written. See \code{Output file formats}.
 }
 \item{approxfilename}{
 (optional) character string: path to fine where the approximate test p-values will be written. 
-Approximate p-values are not computed unless this argument is given.
+Approximate p-values are not computed unless this argument is given. Approximate p-values
+  are computed using the method of Cule et al (2011). See \code{Output file formats}.
 }
 \item{permfilename}{
   (optional) character string: path to file where the permutation test
   p-values will be written.
   Permutation test p-values are not computed unless this argument is
-  given. (See warning)
+  given. (See warning). See \code{Output file formats}.
 }
 \item{intercept}{
   Logical: Should the ridge regression model be fitted with an
@@ -55,22 +56,32 @@ Approximate p-values are not computed unless this argument is given.
 }
 }
 
+\section{Input file formats}{
+\describe{
+\item{genotypesfilename:}{A header row, plus one row for each
+  individual, one SNP per column. The header row contains SNP
+  names. SNPs are coded as 0, 1, 2 for minor allele count. Missing
+  values are not accommodated. Invariant SNPs in the data cause an
+  error, please remove these from the file before calling the function.}
+\item{phenofilename:}{A single column of phenotypes with the individuals in the same order as those in the file \code{genotypesfilename}.}
+\item{thin:}{(optional) Three columns and the same number of rows as there are SNPs in the file \code{genotypesfilename}, one row per SNP. First column: SNP names (must match names in \code{genotypesfilename}); second column: chromosome;  third column: SNP position in BP.}
+}
+}
+
+\section{Output file formats}{
+All output files are optional. Whether or not \code{betafilename} is provided, fitted coefficients are returned to the R workshpace. If \code{betafilename} is provided, fitted coefficients are written to the file specified (in addition).
+\describe{
+\item{betafilename:}{Two columns: First column is SNP names in same order as in \code{genotypesfilename}, second column is fitted coefficients. If \code{intercept = TRUE} (the default) then the first row is the fitted intercept (with the name Intercept in the first column).}
+\item{approxfilename:}{Two columns: First column is SNP names in same order as in \code{genotypesfilename}, second column is approximate p-values.}
+\item{permfilename:}{Two columns: First column is SNP names in same order as in \code{genotypesfilename}, second column is permutation p-values.}
+}
+}
+
 \details{
-  The file in \code{genofilename} must be formatted as a header row
-  consisting of SNP names followed by SNP genotypes one row per
-  individual. SNPs must be coded as 0, 1, 2 for minor allele
-  count. Missing values are not accommodated. Invariant SNPs in the data cause an
-  error, please remove these from the file before calling the function.
-  The file in \code{phenofilename} must be formatted as a single column of
-  phenotypes with the individuals in the same order as those in the file
-  in \code{genofilename}
   If a file \code{thin} is supplied, and the shrinkage parameter
   \code{lambda} is being computed automatically based on the data, then
   this file is used to thin the SNP data by SNP position. If this file
-  is not supplied, SNPs are thinned by number of SNPs.
-    If the file \code{approxfilename} is supplied, approximate p-values
-  are computed using the method of Cule et al (2011).
-
+  is not supplied, SNPs are thinned automatically based on number of SNPs.
 }
 
 \value{

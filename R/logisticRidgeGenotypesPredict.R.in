@@ -1,12 +1,12 @@
-## Linear Ridge Big Predict function (calls C)
+## Logistic Ridge Big Predict function (calls C)
 
-linearRidgeGenotypesPredict <- function(genotypesfilename,
+logisticRidgeGenotypesPredict <- function(genotypesfilename,
                                         betafilename,
                                         phenotypesfilename = NULL,
                                         verbose = FALSE)
 {
-  if(!TRUE)
-    stop("GSL >=1.14 is not installed, you cannot use this function")
+  if(!@HAVE_GSL@)
+      stop("GSL >=1.14 is not installed, you cannot use this function")
   ## Tilde expansion of genotypesfilename
   ## (Because the C code cannot cope with the tilde)
   genotypesfilename <- path.expand(genotypesfilename)
@@ -42,7 +42,7 @@ linearRidgeGenotypesPredict <- function(genotypesfilename,
             thinfilename = as.character("NULL"),
             intercept = as.integer(1),
             lambda = as.double(-1),
-            model = as.character("linear"),
+            model = as.character("logistic"),
             predict = as.integer(1),
             verbose = as.integer(verbose),
             PACKAGE = "ridge")

@@ -1,6 +1,9 @@
 
 /* Header file for ridgeRegressionFunctions.c */
 
+#include "depends.h"
+#ifdef HAVE_GSL_HEADER
+
 /* includes */
 #if _CUDA_
 #include <cuda.h>
@@ -19,7 +22,7 @@
 #include <math.h>
 
 #include "computeLinearRidge.h"
-#include "depends.h"
+
 #include "ReadInData.h"
 
 /* Compute linear ridge coefficeints */
@@ -125,3 +128,6 @@ gsl_vector * my_gsl_linear_fit(gsl_matrix * X,
 			       gsl_vector * y, 
 			       int NROW, 
 			       int NCOL);
+
+#endif
+
