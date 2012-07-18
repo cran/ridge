@@ -1,5 +1,5 @@
-41fb5e5604725186b32eca0b336abecd *ChangeLog
-e2f1df5750b9e84651267328c2e03034 *DESCRIPTION
+068cb18c1cb2d9185f8214916c957545 *ChangeLog
+d92a0f260d7aa5f29cf82ceac19c8b97 *DESCRIPTION
 aebb0d5a57d1e60a6f42a89d6c785161 *NAMESPACE
 8e8f358f4f796546ac5ae3c58b3f63a8 *R/coef.ridgeLinear.R
 30d87c15e5b762d5a10eca50caa6d2a0 *R/coef.ridgeLogistic.R
@@ -62,7 +62,7 @@ b4003be5cc646801789da1c15d2ddf8d *src/Makevars
 ff14f637e121a6bd841137cbf96fc2ca *src/Makevars.win
 786e5853873713c3d64e496278e338bf *src/ReadInData.c
 f1b480a9ba95aad0b23d136e89f70043 *src/ReadInData.h
-d58a5c48a2d19c956114b0aa9db490ab *src/commonFunctions.c
+106ed45eb9275c2a19c1a7695a76212b *src/commonFunctions.c
 1b84eae8e2561aa5a0e376da18601af6 *src/commonFunctions.h
 281c2112fb329ef505f7eb8630976565 *src/computeLinearRidge.c
 c5610556f64b689e43d21a779307775c *src/computeLinearRidge.h

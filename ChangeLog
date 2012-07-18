@@ -1,5 +1,9 @@
 2012-8-21   Erika Cule <erika.cule05@imperial.ac.uk>
 
+	* Bug fix in src/commonFunctions.c
+
+2012-8-21   Erika Cule <erika.cule05@imperial.ac.uk>
+
 	* Added configure.ac so that package will install if GSL >= 1.14 is not available 
 	(with linearRidgeGenotypes, logisticRidgeGenotypes, linearRidgeGenotypesPredict and 
 	logisticRidgeGenotypesPredict disabled). 

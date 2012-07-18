@@ -131,7 +131,7 @@ GSL_TYPE(vector) * readCoefficients(char * filename,
   // A counter to keep track of lines
   int count = 0;
   // Then for every line
-  while(row_of_file, MY_LINE_MAX, file)
+  while(fgets(row_of_file, MY_LINE_MAX, file))
     {
       // Don't need the first word
       first_word = strtok(row_of_file, delim);
