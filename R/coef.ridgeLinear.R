@@ -6,7 +6,7 @@ coef.ridgeLinear <- function (object, all.coef = FALSE, ...)
   if (object$Inter) {
     inter <- object$ym - scaledcoef %*% object$xm
     scaledcoef <- cbind(Intercept = inter, scaledcoef)
-    colnames(scaledcoef)[1] <- "Intercept"
+    colnames(scaledcoef)[1] <- "(Intercept)"
   }
   if(object$automatic && all.coef == FALSE)
     {

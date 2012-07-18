@@ -7,7 +7,7 @@ plot.ridgeLogistic <- function(x, y = NULL, ...)
     lambda <- x$lambda
     automatic <- x$automatic
     nPCs <- x$max.nPCs
-    coefs <- rbind(coef(x, all.coef = TRUE))
+    coefs <- coef(x, all.coef = TRUE)
     if(Inter)
       {
         coefs <- coefs[,-Inter]

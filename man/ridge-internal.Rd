@@ -44,11 +44,10 @@ objectiveFunction(B, X, y, k, intercept = TRUE)
 	algorithm. 
 }
 \references{
-A semi-automatic method to guide the choice of ridge parameter in ridge regression. Cule, E. and De Iorio, M. 
-(2012)
+A semi-automatic method to guide the choice of ridge parameter in ridge regression. Cule, E. and De Iorio, M. (2012) arXiv:1205.0686v1 [stat.AP] 
 }
 \author{
-	Erika Cule
+Cule, E.
 }
 \note{
 These functions are not to be called directly by the user. They should be called via \code{logisticRidge}.

@@ -14,18 +14,6 @@ logisticRidge <- function(formula, data, lambda = "automatic",
     cl <- match.call()
     m <- match.call(expand.dots = FALSE)
     scaling <- match.arg(scaling)
-    if((lambda == "automatic" && !is.null(lambda)) && scaling != "corrForm")
-      {
-        warning("lambda is chosen automatically so scaling is set to \"corrForm\" ")
-        scaling <- "corrForm"
-        cl$scaling <- scaling
-      }
-    if(is.null(lambda) && scaling != "corrForm")
-      {
-        warning("lambda is chosen based on number of components so scaling is set to \"corrForm\"")
-        scaling <- "corrForm"
-        cl$scaling <- scaling
-      }
     if(scaling == "none")
       {
         isScaled <- FALSE
@@ -133,7 +121,7 @@ logisticRidge <- function(formula, data, lambda = "automatic",
     coef <- do.call(cbind, coef)
     ## Need to fix this line
     ifelse(Inter,
-           rownames(coef) <- c("Intercept", colnames(X)),
+           rownames(coef) <- c("(Intercept)", colnames(X)),
            rownames <- colnames(X))
     if(!is.null(nPCs))
       {

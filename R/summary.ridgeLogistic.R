@@ -24,11 +24,11 @@ summary.ridgeLogistic <- function(object, all.coef = FALSE, ...)
             if(isScaled) {
               ## Both intercept and scaled
               summary$coefficients <- cbind(coefs[i,], c(NA, pvalues$coef[,i]), c(NA, pvalues$se[,i]), c(NA, pvalues$tstat[,i]), c(NA, pvalues$pval[,i]))
-              dimnames(summary$coefficients) <- list(c("Intercept", names(object$xm)), c("Estimate", "Scaled estimate", "Std. Error (scaled)", "t value (scaled)", "Pr(>|t|)"))
+              dimnames(summary$coefficients) <- list(c("(Intercept)", names(object$xm)), c("Estimate", "Scaled estimate", "Std. Error (scaled)", "t value (scaled)", "Pr(>|t|)"))
             } else {
               ## Intercept, not scaled
               summary$coefficients <- cbind(coefs[i,], c(NA, pvalues$se[,i]), c(NA, pvalues$tstat[,i]), c(NA, pvalues$pval[,i]))
-              dimnames(summary$coefficients) <- list(c("Intercept", colnames(object$x)), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
+              dimnames(summary$coefficients) <- list(c("(Intercept)", colnames(object$x)), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
             }
           } else {
             if(isScaled) {

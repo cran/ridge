@@ -11,7 +11,7 @@ computeRidgeLogistic <- function(X, y, k, intercept = TRUE, doff = FALSE)
     if(intercept)
       {
         X <- cbind(1, X)
-        colnames(X)[1] <- "Intercept"
+        colnames(X)[1] <- "(Intercept)"
       }
     ##Initialize the estimate of B
     B <- numeric(dim(X)[2])

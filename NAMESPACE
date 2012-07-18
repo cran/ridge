@@ -1,6 +1,5 @@
 # functions
-export(coef.ridgeLinear, coef.ridgeLogistic, linearRidge, logisticRidge, plot.ridgeLinear, plot.ridgeLogistic, predict.ridgeLinear, predict.ridgeLogistic, pvals, summary.ridgeLinear, 
-summary.ridgeLogistic)
+export(linearRidge, logisticRidge, pvals)
 
 # functions not exported
 # export(computeLogisticRidge, objectiveFunction, updateBeta)
@@ -24,4 +23,13 @@ S3method(pvals, ridgeLinear)
 S3method(pvals, ridgeLogistic)
 S3method(summary, ridgeLinear)
 S3method(summary, ridgeLogistic)
+
+## export functions to call C code - fitting
+export(linearRidgeGenotypes, logisticRidgeGenotypes)
+
+## export functions to call C code - predicting
+export(linearRidgeGenotypesPredict, logisticRidgeGenotypesPredict)
+
+## Load the shared object library
+useDynLib(ridge)
 

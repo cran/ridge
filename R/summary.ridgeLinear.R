@@ -11,7 +11,7 @@ summary.ridgeLinear <- function(object, all.coef = FALSE, ...)
     pvalues <- pvals(object)
     summaries <- vector("list", length(res$lambda))
     res$all.coef = all.coef
-    coefs <- rbind(coef(object, all.coef = TRUE))
+    coefs <- coef(object, all.coef = TRUE)
     if(res$automatic)
       {
         res$chosen.nPCs <- object$chosen.nPCs
@@ -25,11 +25,11 @@ summary.ridgeLinear <- function(object, all.coef = FALSE, ...)
               {
                 ## Intercept and scaled
                 summary$coefficients <- cbind(coefs[i,], c(NA, object$coef[,i]), c(NA, pvalues$se[,i]), c(NA, pvalues$tstat[,i]), c(NA, pvalues$pval[,i]))
-                dimnames(summary$coefficients) <- list(c("Intercept", colnames(object$x)), c("Estimate", "Scaled estimate", "Std. Error (scaled)", "t value (scaled)", "Pr(>|t|)"))
+                dimnames(summary$coefficients) <- list(c("(Intercept)", colnames(object$x)), c("Estimate", "Scaled estimate", "Std. Error (scaled)", "t value (scaled)", "Pr(>|t|)"))
               } else {
                 ## Intercept, no scaling
                 summary$coefficients <- cbind(coefs[i,], c(NA, pvalues$se[,i]), c(NA, pvalues$tstat[,i]), c(NA, pvalues$pval[,i]))
-                dimnames(summary$coefficients) <- list(c("Intercept", colnames(object$x)), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
+                dimnames(summary$coefficients) <- list(c("(Intercept)", colnames(object$x)), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
               }
           } else {
             if(isScaled)

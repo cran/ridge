@@ -1,0 +1,10 @@
+2012-7-19   Erika Cule <erika.cule05@imperial.ac.uk> 
+
+	Major new release
+	* fixed a bug in linearRidge when scaling = "none"
+	* added functions linearRidgeGenotypes and logisticRidgeGenotypes and their predicting counterparts linearRidgeGenotypesPredict and 
+	logisticRidgeGenotypespredict. These functions fit linear and logistic ridge regression models for genome-wide SNP data, 
+	optionally automatically choosing the ridge parameter
+	* minor bug fix: "Intercept" now prints as "(Intercept)"
+		(as is the case for lm and glm models)
+	

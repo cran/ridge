@@ -63,9 +63,15 @@ linearRidge <- function(formula, data, lambda = "automatic",
         X <- X[, -Inter] - rep(Xm, rep(n, p))
         ## Subtract the mean from Y
         Y <- Y - Ym
+      } else {
+        Xm <- colMeans(X)
+        Ym <- mean(Y)
+        ## Subtract the means from X
+        X <- X - rep(Xm, rep(n, p))
+        ## Subtract the mean from y
+        Y <- Y - Ym
       }
-     else Ym <- Xm <- NA ## Else Ym and Xm are not needed
-    ## Because an intercept does not have to be calculated
+	## Calculate the scales
      if(corrForm)
        {
          Xscale <- drop(rep(1/(n - 1), n) %*% apply(X, 2, function(x){x - mean(x)})^2)^0.5 * sqrt(nrow(X) - 1)

@@ -7,12 +7,12 @@
 \alias{print.pvalsRidgeLinear}
 \alias{print.pvalsRidgeLogistic}
 \title{
-Compute \emph{p}-values for ridgeLinear and ridgeLogistic models
+Compute p-values for ridgeLinear and ridgeLogistic models
 }
 \description{
-Functions for computing, printing and plotting \emph{p}-values for \code{ridgeLinear}
-and \code{ridgeLogistic} models. The \emph{p}-values are computed using the
-significance test of Cule \emph{et al} (2011). 
+Functions for computing, printing and plotting p-values for ridgeLinear
+and ridgeLogistic models. The p-values are computed using the
+significance test of Cule et al (2011). 
 }
 \usage{
 pvals(x, ...)
@@ -21,11 +21,11 @@ pvals(x, ...)
 
 \method{pvals}{ridgeLogistic}(x, ...)
 
-\method{print}{pvalsRidgeLinear}(x, digits = max(3, getOption("digits") - 3),
-    signif.stars = getOption("show.signif.stars"), all.coef = FALSE, ...) 
+\method{print}{pvalsRidgeLinear}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), 
+    all.coef = FALSE, ...) 
 
-\method{print}{pvalsRidgeLogistic}(x, digits = max(3, getOption("digits") - 3),
-    signif.stars = getOption("show.signif.stars"), all.coef = FALSE, ...)
+\method{print}{pvalsRidgeLogistic}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), 
+    all.coef = FALSE, ...)
 
 \method{plot}{pvalsRidgeLinear}(x, y = NULL, ...)
 
@@ -44,27 +44,17 @@ pvals(x, ...)
     long coefficient tables.  It defaults to the
     \code{show.signif.stars} slot of \code{options}.
   }
-  \item{all.coef}{Logical. Should \emph{p}-values for all the ridge
+  \item{all.coef}{Logical. Should p-values for all the ridge
     regression parameters be printed, or only the one from the ridge
-    parameter chosen using the method of Cule \emph{et al} (2012)}
+    parameter chosen using the method of Cule et al (2012)}
   \item{y}{Dummy argument for compatibility with the default \code{plot} method. Ignored.}
   \item{\dots}{further arguments to be passed to or from other methods}
 
 }
 \details{
-  Standard errors, test statistics and \emph{p}-values are computed using coefficients and data on the scale that was 
-  used to fit them. If the coefficients were standardized before the model was fitted, then the \emph{p}-values 
-  relate to the scaled data.
-  
-  The \code{plot} method plots the \emph{p}-value trace detailed in Cule
-  \emph{et al}. If \code{linearRidge} or \code{logisticRidge} was called with \code{lambda = "automatic"}
-  the \emph{p}-value trace is plotted with the number of principal components on
-  the x-axis and the chosen number of components indicated by a dashed
-  vertical line. If \code{linearRidge} or \code{logisticRidge} was called with a range of
-  \code{lambda} values, the \emph{p}-value trace is plotted. If
-  \code{linearRidge} or \code{logisticRidge} was called with a single value of \code{lambda}
-  or \code{nPCs}, \emph{p}-values for that value of \code{lambda} or
-  \code{nPCs} are plotted as points.
+	Standard errors, test statistics and p-values are computed using coefficients and data on the scale that was 
+	used to fit them. If the coefficients were standardized before the model was fitted, then the p-values 
+	relate to the scaled data.
 }
 \value{
   For the pvals methods, an object of class "pvalsRidgeLinear" or "pvalsRidgeLogistic" 
@@ -72,16 +62,16 @@ pvals(x, ...)
   \item{coef}{The (scaled) regression coefficients}
   \item{se}{The standard errors of the regression coefficients}
   \item{tstat}{The test statistic of the regression coefficients}
-  \item{pval}{The \emph{p}-values of the regression coefficients}
+  \item{pval}{The p-values of the regression coefficients}
   \item{isScaled}{Were the data scaled before the regression
     coefficients were fitted?}
   For the print methods, the argument \code{x} is returned invisibly.
 }
 \references{
-  Significance testing in ridge regression for genetic data. Cule, E. \emph{et al} (2011) BMC Bioinformatics, 12:372
+Significance testing in ridge regression for genetic data. Cule, E. et al (2011) BMC Bioinformatics, 12:372
 }
 \author{
-  Erika Cule
+Cule, E.
 }
 \seealso{
 \code{linearRidge}, \code{logisticRidge}
