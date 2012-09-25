@@ -119,8 +119,8 @@ All output files are optional. Whether or not \code{betafilename} is provided, f
 
 \examples{
 \dontrun{
-    genotypesfile <- paste0(path.package("ridge"), "/data/GenCont_genotypes.txt")
-    phenotypesfile <- paste0(path.package("ridge"), "/data/GenCont_phenotypes.txt")
+    genotypesfile <- system.file("extdata","GenCont_genotypes.txt",package = "ridge")
+    phenotypesfile <- system.file("extdata","GenCont_phenotypes.txt",package = "ridge")
     beta_linearRidgeGenotypes <- linearRidgeGenotypes(genotypesfilename = genotypesfile, phenotypesfilename = phenotypesfile)
     ## compare to output of linearRidge
     data(GenCont) ## Same data as in GenCont_genotypes.txt and GenCont_phenotypes.txt

@@ -75,8 +75,8 @@ A semi-automatic method to guide the choice of ridge parameter in ridge regressi
 }
 \examples{
 \dontrun{
-genotypesfile <- paste0(path.package("ridge"), "/data/GenCont_genotypes.txt")
-phenotypesfile <- paste0(path.package("ridge"), "/data/GenCont_phenotypes.txt")
+genotypesfile <- system.file("extdata","GenCont_genotypes.txt",package = "ridge")
+phenotypesfile <- system.file("extdata","GenCont_phenotypes.txt",package = "ridge")
 betafile <- tempfile(pattern = "beta", fileext = ".dat")
 beta_linearRidgeGenotypes <- linearRidgeGenotypes(genotypesfilename = genotypesfile,
                                                       phenotypesfilename = phenotypesfile,

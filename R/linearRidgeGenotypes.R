@@ -10,7 +10,7 @@ linearRidgeGenotypes <- function(genotypesfilename,
                                    intercept = TRUE,
                                    verbose = FALSE)
   {
-    if(!TRUE)
+    if(!FALSE)
       stop("GSL >=1.14 is not installed, you cannot use this function")
     ## Tilde expansion of phenotypesfilename
     ## (Because the C code cannot cope with the tilde)

@@ -73,8 +73,8 @@ Erika Cule
 }
 \examples{
 \dontrun{
-genotypesfile <- paste0(path.package("ridge"), "/data/GenBin_genotypes.txt")
-phenotypesfile <- paste0(path.package("ridge"), "/data/GenBin_phenotypes.txt")
+genotypesfile <- system.file("extdata","GenBin_genotypes.txt",package = "ridge")
+phenotypesfile <- system.file("extdata","GenBin_phenotypes.txt",package = "ridge")
 betafile <- tempfile(pattern = "beta", fileext = ".dat")
 beta_logisticRidgeGenotypes <- logisticRidgeGenotypes(genotypesfilename = genotypesfile,
                                                       phenotypesfilename = phenotypesfile,

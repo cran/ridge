@@ -5,7 +5,7 @@ logisticRidgeGenotypesPredict <- function(genotypesfilename,
                                         phenotypesfilename = NULL,
                                         verbose = FALSE)
 {
-  if(!TRUE)
+  if(!FALSE)
       stop("GSL >=1.14 is not installed, you cannot use this function")
   ## Tilde expansion of genotypesfilename
   ## (Because the C code cannot cope with the tilde)

@@ -1,3 +1,10 @@
+2012-9-27	Erika Cule <erika.cule05@imperial.ac.uk>
+
+	* Flat text (.txt) data files were moved from ridge/data to ridge/inst/extdata (in the source, which becomes ridge/extdata in the installed package). The .txt files 
+	should be in inst/extdata because they files are used by the package examples (albeit in not run sections), as described in Writing R Extensions 1.1.5 Data in packages.
+	* Some users were reporting problems installing the package on some Linux OS. configure has been modified to fix this 
+	problem.
+
 2012-8-21   Erika Cule <erika.cule05@imperial.ac.uk>
 
 	* Bug fix in src/commonFunctions.c
