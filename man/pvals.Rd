@@ -21,11 +21,11 @@ pvals(x, ...)
 
 \method{pvals}{ridgeLogistic}(x, ...)
 
-\method{print}{pvalsRidgeLinear}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), 
-    all.coef = FALSE, ...) 
+\method{print}{pvalsRidgeLinear}(x, digits = max(3, getOption("digits") - 3),
+signif.stars = getOption("show.signif.stars"), all.coef = FALSE, ...) 
 
-\method{print}{pvalsRidgeLogistic}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), 
-    all.coef = FALSE, ...)
+\method{print}{pvalsRidgeLogistic}(x, digits = max(3, getOption("digits") - 3),
+signif.stars = getOption("show.signif.stars"), all.coef = FALSE, ...)
 
 \method{plot}{pvalsRidgeLinear}(x, y = NULL, ...)
 

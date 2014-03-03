@@ -1,3 +1,8 @@
+2014-3-02	Erika Cule <erika.cule05@imperial.ac.uk>
+
+	* Fixed layout of .Rd files
+	* Added deletion of Makevars to cleanup script
+
 2012-9-27	Erika Cule <erika.cule05@imperial.ac.uk>
 
 	* Flat text (.txt) data files were moved from ridge/data to ridge/inst/extdata (in the source, which becomes ridge/extdata in the installed package). The .txt files 

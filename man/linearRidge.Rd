@@ -14,7 +14,8 @@ Fits a linear ridge regression model. Optionally, the ridge regression parameter
 the method proposed by Cule et al (2012).
 }
 \usage{
-linearRidge(formula, data, lambda = "automatic", nPCs = NULL, scaling = c("corrForm", "scale", "none"), ...)
+linearRidge(formula, data, lambda = "automatic", nPCs = NULL,
+scaling = c("corrForm", "scale", "none"), ...)
 
 \method{coef}{ridgeLinear}(object, all.coef = FALSE, ...)
 
@@ -26,7 +27,9 @@ linearRidge(formula, data, lambda = "automatic", nPCs = NULL, scaling = c("corrF
 
 \method{summary}{ridgeLinear}(object, all.coef = FALSE, ...)
 
-\method{print}{summary.ridgeLinear}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), ...) 
+\method{print}{summary.ridgeLinear}(x, digits = max(3,
+getOption("digits") - 3),
+signif.stars = getOption("show.signif.stars"), ...) 
 
 }
 \arguments{

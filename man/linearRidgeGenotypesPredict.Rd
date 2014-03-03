@@ -11,7 +11,8 @@
   data are too large to be read into R.
 }
 \usage{
-linearRidgeGenotypesPredict(genotypesfilename, betafilename, phenotypesfilename = NULL, verbose = FALSE)
+linearRidgeGenotypesPredict(genotypesfilename, betafilename, phenotypesfilename = NULL,
+verbose = FALSE)
 }
 
 \arguments{

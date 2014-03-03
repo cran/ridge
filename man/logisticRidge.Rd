@@ -14,7 +14,8 @@ Fits a logistic ridge regression model. Optionally, the ridge regression paramet
 the method proposed by Cule et al (2012).
 }
 \usage{
-logisticRidge(formula, data, lambda = "automatic", nPCs = NULL, scaling = c("corrForm", "scale", "none"), ...)
+logisticRidge(formula, data, lambda = "automatic", nPCs = NULL,
+scaling = c("corrForm", "scale", "none"), ...)
 
 \method{coef}{ridgeLogistic}(object, all.coef = FALSE, ...)
 
@@ -27,7 +28,8 @@ logisticRidge(formula, data, lambda = "automatic", nPCs = NULL, scaling = c("cor
 
 \method{summary}{ridgeLogistic}(object, all.coef = FALSE, ...)
 
-\method{print}{summary.ridgeLogistic}(x, digits = max(3, getOption("digits") - 3), signif.stars = getOption("show.signif.stars"), ...) 
+\method{print}{summary.ridgeLogistic}(x, digits = max(3, getOption("digits") - 3),
+signif.stars = getOption("show.signif.stars"), ...) 
 
 }
 \arguments{

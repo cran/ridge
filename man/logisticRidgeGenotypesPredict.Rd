@@ -11,7 +11,8 @@
   data are too large to be read into R.
 }
 \usage{
-logisticRidgeGenotypesPredict(genotypesfilename, betafilename, phenotypesfilename = NULL, verbose = FALSE)
+logisticRidgeGenotypesPredict(genotypesfilename, betafilename,
+phenotypesfilename = NULL, verbose = FALSE)
 }
 
 \arguments{
