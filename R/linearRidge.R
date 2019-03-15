@@ -93,7 +93,16 @@ linearRidge <- function(formula, data, lambda = "automatic",
          if(is.null(nPCs))
            {
              propVar <- cumsum(Lambda) / sum(Lambda) * 100
-             nPCs <- which.max(propVar[propVar < 90]) + 1
+             # if there are values for propVar below 90
+             if (length(which.max(propVar[propVar < 90])) > 0)
+             {
+               ifelse((length(propVar[propVar >= 90]) > 0), (nPCs <- which.max(propVar[propVar < 90]) + 1), (nPCs <- which.max(propVar[propVar < 90])))
+             }
+             else
+             {
+               nPCs <- 1
+             }
+             
            }
        }
     ## Compute ahat

@@ -84,7 +84,16 @@ logisticRidge <- function(formula, data, lambda = "automatic",
          if(is.null(nPCs))
            {
              propVar <- cumsum(Lambda) / sum(Lambda) * 100
-             max.nPCs <- which.max(propVar[propVar < 90]) + 1
+     
+             # if there are values for propVar below 90
+             if (length(which.max(propVar[propVar < 90])) > 0)
+             {
+               ifelse((length(propVar[propVar >= 90]) > 0), (max.nPCs <- which.max(propVar[propVar < 90]) + 1), (max.nPCs <- which.max(propVar[propVar < 90])))
+             }
+             else 
+             {
+               max.nPCs <- 1
+             }
            }
        }
     if(lambda == "automatic" && is.null(nPCs))

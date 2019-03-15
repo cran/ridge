@@ -1,3 +1,12 @@
+## Changes Version 2.4 -  Steffen Moritz
+
+  * bugfix in logisticRidge and linearRidge see: https://github.com/SteffenMoritz/ridge/issues/2
+  
+  * bugfix to pass cran checks 'warning: missing template: HAVE_GSL_HEADER autoheader'
+  
+  * Updated Readme
+
+
 ## Changes Version 2.3 -  Steffen Moritz
 
   * Some fixed to remain on CRAN and comly with CRAN policy
