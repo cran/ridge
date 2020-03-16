@@ -24,3 +24,5 @@ NeedsCompilation: yes
 RoxygenNote: 6.0.1
 Packaged: 2019-03-14 18:51:56 UTC; Steve
 Date/Publication: 2019-03-15 06:50:03 UTC
+Suggests: 
+    testthat
