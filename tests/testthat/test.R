@@ -28,7 +28,7 @@ test_that("test linearRidge vcov method for lambda = 0, two terms", {
   model2 <- linearRidge(mpg ~ wt + cyl, data = mtcars, lambda = 0.0)
   
   vc1 <- vcov(model1)
-  vc2 <- vcov(model2, data = mtcars)
+  vc2 <- vcov(model2)
   # vcov agrees between model1 and model2 when lambda is 0
   expect_equal(as.vector(vc1), as.vector(vc2), tolerance = tol, label = "vcov lambda 0")
 })
@@ -38,7 +38,7 @@ test_that("test linearRidge vcov method for lambda = 0, three terms", {
   model2 <- linearRidge(mpg ~ wt + cyl + disp, data = mtcars, lambda = 0.0)
   
   vc1 <- vcov(model1)
-  vc2 <- vcov(model2, data = mtcars)
+  vc2 <- vcov(model2)
   # vcov agrees between model1 and model2 when lambda is 0
   expect_equal(as.vector(vc1), as.vector(vc2), tolerance = tol, label = "vcov lambda 0")
 })
@@ -48,7 +48,7 @@ test_that("test linearRidge vcov method for lambda = 0.01", {
   model2 <- linearRidge(mpg ~ wt + cyl, data = mtcars, lambda = 0.01)
   
   vc1 <- vcov(model1)
-  vc2 <- vcov(model2, data = mtcars)
+  vc2 <- vcov(model2)
   # at least one coefficient is greater than 0.01 different:
   expect(any(abs(vc1 - vc2) > 0.01), "coefficients agree too strongly")
   # all coefficients are less than 0.013 different:

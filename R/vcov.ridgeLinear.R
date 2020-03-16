@@ -1,13 +1,9 @@
 ## vcov method for ridgeLinear objects
 
-vcov.ridgeLinear <- function (object, data = NULL) 
+vcov.ridgeLinear <- function (object) 
 {
-  if (is.null(data)) {
-    data <- object$data
-  }
-  if (is.null(data)) {
-    stop("data must be provided either as a parameter, or in the model object")
-  }
+  # get back the original data
+  data <- model.frame(object)
 
   # drop "(Intercept)" from names
   coef_names <- attr(coef(object), "names")[-1]
