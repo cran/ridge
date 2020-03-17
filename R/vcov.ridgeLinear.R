@@ -5,16 +5,17 @@ vcov.ridgeLinear <- function (object)
   # get back the original data
   data <- model.frame(object)
 
+  # For now, only works if we have an intercept
+  stopifnot(object$Inter == 1)
   # drop "(Intercept)" from names
   coef_names <- attr(coef(object), "names")[-1]
-  # get data
-  x <- as.matrix(data[,coef_names])
-  # put back data for intercept term
-  X <- cbind(1, x)
+  # get data, with intercept term
+  X <- model.matrix(object, data=data)
   # make y the original data:
   y_orig <- with(object, y+ym)
   # See also equation 3.44 of "elements of statistical learning", hastie, Tibshirani, Friedman
   # https://web.stanford.edu/~hastie/ElemStatLearn/
+  # Inverting this matrix may not be the most numerically stable.
   inv_mat = solve(t(X) %*% X + object$lambda * diag(ncol(X)))
   betaHat <- inv_mat %*% t(X) %*% y_orig
   # sum squared residuals divided by degrees of freedom
