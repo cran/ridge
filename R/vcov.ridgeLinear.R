@@ -1,7 +1,9 @@
 ## vcov method for ridgeLinear objects
 
-vcov.ridgeLinear <- function (object) 
+vcov.ridgeLinear <- function (object, ...) 
 {
+  # TODO(dan): check we didn't get any arguments we are unprepared for
+
   # get back the original data
   data <- model.frame(object)
 
