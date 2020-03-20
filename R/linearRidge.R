@@ -1,5 +1,7 @@
 ## R function to fit the linear ridge regression model
 
+#' @export
+#' @importFrom stats .getXlevels predict model.response model.matrix
 linearRidge <- function(formula, data, lambda = "automatic",
                         nPCs = NULL, scaling = c("corrForm", "scale", "none"), ...)
   {
@@ -48,6 +50,8 @@ linearRidge <- function(formula, data, lambda = "automatic",
     Y <- model.response(m)
     ## Construct the design matrix
     X <- model.matrix(Terms, m)
+    contrasts <- attr(X, "contrasts")
+    xlevels <- .getXlevels(Terms, m)
     ## get the dimensions of X in terms of n and p
     n <- nrow(X)
     p <- ncol(X)
@@ -195,7 +199,10 @@ linearRidge <- function(formula, data, lambda = "automatic",
       }
     ##
     colnames(df) <- c("model", "variance", "residual")
-    res <- list(automatic = automatic, call = cl, coef = cbind(drop(coef)), df = df, Inter = Inter, isScaled = isScaled, lambda = lambda, scales = Xscale, terms = Terms, x = X, xm = Xm, y = Y, ym = Ym)
+    res <- list(automatic = automatic, call = cl, coef = cbind(drop(coef)), df = df,
+                Inter = Inter, isScaled = isScaled, lambda = lambda, scales = Xscale,
+                terms = Terms, x = X, xm = Xm, y = Y, ym = Ym, model_frame = m,
+                contrasts = contrasts, xlevels = xlevels)
     ## This line needs fixing
     if(!is.null(nPCs))
       {
