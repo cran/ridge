@@ -1,7 +1,7 @@
-aff996a229a937e9a6b11d42d18fe64d *DESCRIPTION
+a34687c99b325e061427b415411fe1a1 *DESCRIPTION
 b4d830c712b09b387fa752a77c999750 *INSTALL
 f666b70f17ab33a3404a0eb422b2c0d4 *NAMESPACE
-6945bcda2edb8ab8b7f63166d85c84b3 *NEWS.md
+ab90a7f938a14078e8ccfd17ed065524 *NEWS.md
 9bb5af47984622db977f124a0a2aee77 *R/coef.ridgeLinear.R
 11973a74eb73236ed36d525f9b509819 *R/coef.ridgeLogistic.R
 2fb62d671f22ed54345f6fa2914c38fc *R/computeRidgeLogistic.R
@@ -37,10 +37,10 @@ d4d1d0de9c0245a1ceb6a2dcc601913b *R/ridge.R
 06e1f78c6ad3734c91b0679164f807cb *R/summary.ridgeLogistic.R
 0cb4bcb2999255d17de1e368535524a7 *R/updateBeta.R
 5f13a9aa72b2eeca0a0c24bff540d1d7 *R/vcov.ridgeLinear.R
-6b1f7c4da131b819f2029fa784aaf9f2 *README.md
+965f532b57f1292dfc7f8c70fb80742b *README.md
 b7073d35a5700c5b5e8587e6c9d9ece8 *cleanup
-7b6af97880c21d5de55228997f408efe *configure
-7a1e9f5740e36828546944986b0b2514 *configure.ac
+17d88a76901320fb92375490c33ef4af *configure
+f09a9bc4479f054fb597a269a3ad410c *configure.ac
 bc879304b4cbf428d5f58ab1fd7f294b *data/GenBin.rda
 a277d56f239081418f799bc490488de0 *data/GenCont.rda
 03847e4b9069b17dc576dd674cc46765 *data/Gorman.rda
@@ -71,8 +71,8 @@ f640b7e0df350d2627f80ba0ed41a6df *src/computeLinearRidge.c
 c5610556f64b689e43d21a779307775c *src/computeLinearRidge.h
 e20faebbe14ee91d857c70f128470975 *src/computePvals.c
 579a88d2d3c632ec2f80cf7689b54039 *src/computePvals.h
-c409ad14af05d05a2adf8b7a83292ac0 *src/config.h
-ba879908835863da4a7a108f56162c19 *src/config.h.in
+445b32f2b1532bf8198ddbe6813ef8c8 *src/config.h
+bbbdd726cbebaab3ae1ccf2a672ecd25 *src/config.h.in
 572fa97e9aa0057030056f9cadb45be6 *src/coordinateDescent.c
 3b40ea0246c1ab77323d3f250e3d2b11 *src/coordinateDescent.h
 57b89b3f6353b9d89d4efc21d8716edb *src/depends.h
