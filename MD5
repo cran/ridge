@@ -1,7 +1,7 @@
-a34687c99b325e061427b415411fe1a1 *DESCRIPTION
+79802862385c8ae994721c7bcd16bba9 *DESCRIPTION
 b4d830c712b09b387fa752a77c999750 *INSTALL
 f666b70f17ab33a3404a0eb422b2c0d4 *NAMESPACE
-ab90a7f938a14078e8ccfd17ed065524 *NEWS.md
+9126760e32f0b7784979af410721658a *NEWS.md
 9bb5af47984622db977f124a0a2aee77 *R/coef.ridgeLinear.R
 11973a74eb73236ed36d525f9b509819 *R/coef.ridgeLogistic.R
 2fb62d671f22ed54345f6fa2914c38fc *R/computeRidgeLogistic.R
@@ -37,10 +37,10 @@ d4d1d0de9c0245a1ceb6a2dcc601913b *R/ridge.R
 06e1f78c6ad3734c91b0679164f807cb *R/summary.ridgeLogistic.R
 0cb4bcb2999255d17de1e368535524a7 *R/updateBeta.R
 5f13a9aa72b2eeca0a0c24bff540d1d7 *R/vcov.ridgeLinear.R
-965f532b57f1292dfc7f8c70fb80742b *README.md
+3b2f2b7b9d3aeb5d91fb9a1cf193a86d *README.md
 b7073d35a5700c5b5e8587e6c9d9ece8 *cleanup
 17d88a76901320fb92375490c33ef4af *configure
-f09a9bc4479f054fb597a269a3ad410c *configure.ac
+38ab72b4784e595d2cfe54202cefa2c6 *configure.ac
 bc879304b4cbf428d5f58ab1fd7f294b *data/GenBin.rda
 a277d56f239081418f799bc490488de0 *data/GenCont.rda
 03847e4b9069b17dc576dd674cc46765 *data/Gorman.rda
