@@ -1,6 +1,8 @@
-AC_INIT(ridge, version-2.8, steffen.moritz10@gmail.com, ridge_2.7.tar.gz, http://cran.r-project.org/web/packages/ridge)
+
+AC_INIT(ridge, version-2.9, steffen.moritz10@gmail.com, ridge_2.9.tar.gz, http://cran.r-project.org/web/packages/ridge)
+
 AC_CONFIG_HEADER([src/config.h])
-#include <stdlib.h>
+
 
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
@@ -10,23 +12,22 @@ fi
 CC=`"${R_HOME}/bin/R" CMD config CC`
 CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
 CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+LDFLAGS=`"${R_HOME}/bin/R" CMD config LDFLAGS`
 
+# Checks for common programs using default macros
+AC_PROG_CC
 
-dnl Set the variable HAVE_GSL to TRUE
-HAVE_GSL=TRUE
-dnl Following lines kindly supplied by Dirk Eddelbuettel
-dnl Use gsl-config to find arguments for compiler and linker flags
-dnl Check for non-standard programs: gsl-config(1)
+## Use gsl-config to find arguments for compiler and linker flags
+##
+## Check for non-standard programs: gsl-config(1)
 AC_PATH_PROG([GSL_CONFIG], [gsl-config])
-dnl If gsl-config was found, let's use it
+## If gsl-config was found, let's use it
 if test "${GSL_CONFIG}" != ""; then
-dnl Use gsl-config for header and linker arguments of GSL 
+    # Use gsl-config for header and linker arguments
     GSL_CFLAGS=`${GSL_CONFIG} --cflags`
     GSL_LIBS=`${GSL_CONFIG} --libs`
-    CFLAGS="$CFLAGS $GSL_CFLAGS"
-    CPPFLAGS="$CPPFLAGS $GSL_CPPFLAGS"
-dnl else set HAVE_GSL to FALSE and print warnings
-else	
+    HAVE_GSL=TRUE
+else
     AC_MSG_WARN([gsl-config not found, is GSL installed?])
     AC_MSG_WARN([ridge will be installed but some functions will be unavailable])
     HAVE_GSL=FALSE
@@ -42,37 +43,6 @@ dnl Define HAVE_GSL_H in src/config.h
     fi
 fi
 
-if test "${HAVE_GSL}" = TRUE; then
-   AC_MSG_CHECKING([if GSL version >= 1.14])
-   AC_RUN_IFELSE([AC_LANG_SOURCE([[
-   #include <string.h>
-   #include <gsl/gsl_version.h>
-   int main() {
-       #ifdef GSL_VERSION
-       int major, minor;
-       char *gslv = GSL_VERSION;
-       if ((sscanf(gslv, "%d.%d", &major, &minor)) != 2) {
-       	  exit (1);
-       }
-       exit (minor < 14);
-       #else
-       exit(1);
-       #endif
-       }
-       ]])],
-       [gsl_version_ok=yes],
-       [gsl_version_ok=no],
-       [gsl_version_ok=yes])
-   if test "${gsl_version_ok}" = no; then
-      	AC_MSG_RESULT([no])
-	AC_MSG_WARN([gsl < 1.14 was found and will not be used])
-	AC_MSG_WARN([ridge will be installed but some functions will be unavailable])
-	AC_MSG_WARN([to enable GSL functions please upgrade GSL to >=1.14 and reinstall ridge])
-	HAVE_GSL=FALSE	    
-   else
-	AC_MSG_RESULT([yes])
-   fi dnl ends if test ${gsl_version_ok}
-fi dnl ends if $HAVE_GSL
 
 dnl Substitute HAVE_GSL in the functions R/l*Genotypes*.R.in 
 AC_SUBST(HAVE_GSL)
@@ -90,10 +60,10 @@ if test "${HAVE_OPENBLAS}" = TRUE; then
 fi
 fi
 
+
 dnl Now substitute these variables in src/Makevars.in to create src/Makevars
 if test "${HAVE_GSL}" = TRUE; then
       AC_SUBST(GSL_CFLAGS) 
       AC_SUBST(GSL_LIBS)
       AC_OUTPUT(src/Makevars)
 fi
-	
