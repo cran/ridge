@@ -1,5 +1,5 @@
 
-AC_INIT([ridge],[version-3.0],[steffen.moritz10@gmail.com],[ridge_3.0.tar.gz],[http://cran.r-project.org/web/packages/ridge])
+AC_INIT([ridge],[version-3.1],[steffen.moritz10@gmail.com],[ridge_3.1.tar.gz],[http://cran.r-project.org/web/packages/ridge])
 
 AC_CONFIG_HEADERS([src/config.h])
 
@@ -47,18 +47,8 @@ fi
 dnl Substitute HAVE_GSL in the functions R/l*Genotypes*.R.in 
 AC_SUBST(HAVE_GSL)
 AC_CONFIG_FILES([R/l*Genotypes*.R])
-AC_OUTPUT
 
-if test "${HAVE_GSL}" = TRUE; then
-dnl Check whether libopenblas is available
-AC_CHECK_LIB(openblas, $sgemm, [HAVE_OPENBLAS=TRUE;HAVE_OPENBLAS=FALSE])
-dnl If openblas is available
-if test "${HAVE_OPENBLAS}" = TRUE; then
-   GSL_CBLAS_LIB=-lopenblas
-   GSL_CFLAGS=`${GSL_CONFIG} --cflags`
-   GSL_LIBS="`${GSL_CONFIG} --libs-without-cblas` -lopenblas"
-fi
-fi
+
 
 
 dnl Now substitute these variables in src/Makevars.in to create src/Makevars

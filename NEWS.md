@@ -1,16 +1,14 @@
-## Changes Version 2.9 -  Steffen Moritz
 
-  * configure.ac problem wasn't completely fixed trying another fix
+## Changes Version 3.1 -  Steffen Moritz
 
-
-## Changes Version 2.8 -  Steffen Moritz
-
-  * Another fix to configure.ac
+  * Fixes to remain on CRAN
+  
+  * GitHub Actions as CI Tool 
 
 
-## Changes Version 2.7 -  Steffen Moritz
+## Changes Version 2.7 until 3.0 -  Steffen Moritz
 
-  * Fixes to autoconfig, configure
+  * Fixes related to autoconf (needed for passing new CRAN checks)
 
 
 ## Changes Version 2.6 -  Steffen Moritz
