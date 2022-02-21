@@ -4,8 +4,8 @@ Title: Ridge Regression with Automatic Selection of the Penalty
 Description: Linear and logistic ridge regression functions. Additionally includes special functions for 
             genome-wide single-nucleotide polymorphism (SNP) data. More details can be found in
             <doi: 10.1002/gepi.21750> and <doi: 10.1186/1471-2105-12-372>.
-Version: 3.1
-Date: 2022-02-07
+Version: 3.2
+Date: 2022-02-21
 Authors@R: 
   c(
   person("Steffen", "Moritz", email="steffen.moritz10@gmail.com", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-0085-1804")),
@@ -28,5 +28,5 @@ NeedsCompilation: yes
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests: testthat, datasets, covr
-Packaged: 2022-02-07 20:02:47 UTC; Steve
-Date/Publication: 2022-02-07 20:30:02 UTC
+Packaged: 2022-02-21 04:30:11 UTC; Steve
+Date/Publication: 2022-02-21 05:10:02 UTC
